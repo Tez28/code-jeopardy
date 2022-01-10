@@ -5,26 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Jeopardy</title>
-    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="./assets/css style/styles.css">
 
 </head>
 <body>
+    <!-- nav bar -->
+
+    <!-- high score link -->
     <div class="score-list"><a href="">View High Score</a></div>
+
+    <!-- insert timer -->
     <div class="timer">Timer: <span class="time">0</span></div>
 
+
+    <!-- initial instructions -->
     <div class="container">
         <div class="start">
             <h1>Code Jeopardy</h1>
             <p>Instructions TBD</p>
             <button class="start-btn">Start Quiz</button>
         </div>
-
+        <!-- insert quiz area -->
         <div class="hide" id="questions">
             <h2 class="question-title"></h2>
-            <div class="choices"></div>
-            
+            <ul class="choices" id="answers"></ul>
+            <button class="next-btn">Next</button>
         </div>
+        
 
+        <!-- insert score board-->
         <div class="hide" id="end-screen">
             <h2>All Done!</h2>
             <p>Final Score is <span class="final-score">0</span></p>
@@ -40,6 +49,7 @@
 
     
 
-    <script src="./assets/script.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/questions.js"></script>
 </body>
 </html>

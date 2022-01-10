@@ -1,19 +1,27 @@
 // declare variables
-var secondsLeft = 75;
-var currentQue = 0;
 var startButton = document.querySelector(".start-btn")
 var timeEl = document.querySelector(".time") 
 var choicesEl   = document.querySelector(".choices")
-var nextBtn = document.getElementById("#next-btn")
-var questionsEl = document.querySelector("#questions");
-var inititalsEl = document.querySelector("#initials");
-var questionsTi = document.querySelector(".questions-title");
-var createUl = document.createElement("ul");
-var finalScore = document.getElementById(".final-score");
+var questionsEl = document.querySelector("#questions")
+var inititalsEl = document.querySelector("#initials")
+var questionsTi = document.querySelector(".questions-title")
+var createUl = document.createElement("ul")
+
+// question numer variables
+var currentQue = 0;
+//seconds starting-left
+var secondsLeft = 75;
+
+// hold time for interval
 var holdTimer = 0;
+
+//input penalty time
 var penalty = 15;
+
+// add score variable
 var scoreEl = 0;
 var questionsAns = 0;
+
 
 
 
@@ -69,8 +77,6 @@ var questions = [
         answer: "A"
     },
 ]
-
-
 // add event listener for start quiz
 
 function startQuiz () {
@@ -86,27 +92,37 @@ startButton.onclick = startQuiz
 
 //trigger timer on start button
 startButton.addEventListener("click", function (){
-    
+
     if(holdTimer === 0) {
         holdTimer = setInterval(function(){
             secondsLeft--;
             timeEl.textContent = + secondsLeft;
-            initiateQuest()
+
             if(secondsLeft <= 0) {
                 clearInterval(holdTimer);
                 timeEl.textContent = "Time is up! Check score";
             }
         }, 1000);
     }
-})
+});
 
-function initiateQuest() {
-    document.questionsTi.innerHTML = questions[].Title;
-    choicesEl.innerHTML = questions[].choices;
+// render question to page
+function render (currentQue) {
+    questionsEl.innerHTML = "";
+    createUl.innerHTML = "";
 
+    for (var i = 0; i < questions.length; i++) {
 
-    
+        var userQuestions = questions[currentQue].Title;
+        var userOptions = questions[currentQue].choices;
+        questionsEl.textContent = userQuestions;
+    }
 
+    userOptions.forEach(function (newItem) {
+        var listItem = document.createElement("li");
+        listItem.textContent = newItem;
+        questionsEl.appendChild(listItem);
+        listItem.addEventListener("click", (compare));
+    })
 
-
-};
+}
