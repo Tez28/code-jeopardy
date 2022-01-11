@@ -129,3 +129,26 @@ function nextQuestion() {
 
 }
 
+// check answer for accuracy
+function reviewAnswer(answer) {
+    if (questions[questionIndex].answer === questions[questionIndex].choices[answer]) {
+        // add 1pt for correct
+        correctAns++;
+        // inform tester correct
+        checkAnswer.textContent = "Your Correct!";
+    } else {
+        // if wrong answer selected inform and subtract time
+        hold -= 15;
+        timeEl.textContent = holdTimer;
+        checkAnswer.textContent = "Incorrect";
+    }
+
+    questionIndex++;
+    // this repeats sequence for all questions
+    if (questionIndex < questions.length) {
+        nextQuestion();
+    }else {
+        // once final question reached end quiz
+        endQuiz();
+    }
+}
