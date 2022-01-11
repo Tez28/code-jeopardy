@@ -1,23 +1,35 @@
 // declare variables
-var secondsLeft = 75;
-var currentQue = 0;
+
 var startButton = document.querySelector(".start-btn")
 var timeEl = document.querySelector(".time") 
 var choicesEl   = document.querySelector(".choices")
 var nextBtn = document.getElementById("#next-btn")
 var questionsEl = document.querySelector("#questions");
+var answersEl = document.querySelector("#answers")
 var inititalsEl = document.querySelector("#initials");
 var questionsTi = document.querySelector(".questions-title");
-var createUl = document.createElement("ul");
+
 var finalScore = document.getElementById(".final-score");
+var answerA = document.getElementById("#btn-A")
+var answerB = document.getElementById("#btn-B")
+var answerC = document.getElementById("#btn-C")
+var answerD = document.getElementById("#btn-D")
+var checkAnswer =  document.getElementById("#checkAnswer")
+
 var holdTimer = 0;
 var penalty = 15;
 var scoreEl = 0;
-var questionsAns = 0;
+var correctAns = 0;
+
+// create quiz
+var quiz = newQuiz(questions);
+
+//display quiz
+initiateQuiz();
 
 
 
-var questions = [
+const questions = [
     {
         Title: "Question 1",
         choices: ["A", "B", "C", "D" ],
@@ -29,42 +41,42 @@ var questions = [
         answer: "A"
     },
     {
-        Title: "Question 1",
+        Title: "Question 3",
         choices: ["A", "B", "C", "D" ],
         answer: "A"
     },
     {
-        Title: "Question 1",
+        Title: "Question 4",
         choices: ["A", "B", "C", "D" ],
         answer: "A"
     },
     {
-        Title: "Question 1",
+        Title: "Question 5",
         choices: ["A", "B", "C", "D" ],
         answer: "A"
     },
     {
-        Title: "Question 1",
+        Title: "Question 6",
         choices: ["A", "B", "C", "D" ],
         answer: "A"
     },
     {
-        Title: "Question 1",
+        Title: "Question 7",
         choices: ["A", "B", "C", "D" ],
         answer: "A"
     },
     {
-        Title: "Question 1",
+        Title: "Question 8",
         choices: ["A", "B", "C", "D" ],
         answer: "A"
     },
     {
-        Title: "Question 1",
+        Title: "Question 9",
         choices: ["A", "B", "C", "D" ],
         answer: "A"
     },
     {
-        Title: "Question 1",
+        Title: "Question 10",
         choices: ["A", "B", "C", "D" ],
         answer: "A"
     },
@@ -78,15 +90,17 @@ function startQuiz () {
     var startEl = document.querySelector(".start")
     startEl.setAttribute("class", "hide")
     questionsEl.removeAttribute("class")
+    questionIndex = 0;
+    holdTimer = 75;
 
 }
 
-
-startButton.onclick = startQuiz
-
 //trigger timer on start button
 startButton.addEventListener("click", function (){
+
     
+    
+    startButton.onclick = startQuiz    
     if(holdTimer === 0) {
         holdTimer = setInterval(function(){
             secondsLeft--;
@@ -98,15 +112,20 @@ startButton.addEventListener("click", function (){
             }
         }, 1000);
     }
+    showQuiz();
 })
 
-function initiateQuest() {
-    document.questionsTi.innerHTML = questions[].Title;
-    choicesEl.innerHTML = questions[].choices;
+// present questions title and choices
+function showQuiz() {
+    nextQuestion();
+}
 
+function nextQuestion() {
+    questionsTi.textContent = questions[questionIndex].Title;
+    answerA.textContent = questions[questionsIndex].choices[0];
+    answerB.textContent = questions[questionsIndex].choices[1];
+    answerC.textContent = questions[questionsIndex].choices[2];
+    answerD.textContent = questions[questionsIndex].choices[3];
 
-    
+}
 
-
-
-};

@@ -22,13 +22,22 @@
     <div class="container">
         <div class="start">
             <h1>Code Jeopardy</h1>
-            <p>Instructions TBD</p>
+            <p>It's Time to test your knowledge on comic book heroes! You will be presented with
+                various questions pertainig to comic book heroes across the DCEU and MCU (DC Comics and Marvel).
+                This is a timed quiz and wrong answers are penalized with a time reduction so think carefully!
+            </p>
             <button class="start-btn">Start Quiz</button>
         </div>
         <!-- insert quiz area -->
         <div class="hide" id="questions">
             <h2 class="question-title"></h2>
-            <ul class="choices" id="answers"></ul>
+            <ul class="choices" id="answers">
+                <button id="btn-A" class="answer-btn"></button>
+                <button id="btn-B" class="answer-btn"></button>
+                <button id="btn-C" class="answer-btn"></button>
+                <button id="btn-D" class="answer-btn"></button>
+                <p id="checkAnswer"></p>
+            </ul>
             <button class="next-btn">Next</button>
         </div>
         
@@ -50,6 +59,5 @@
     
 
     <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/questions.js"></script>
 </body>
 </html>
