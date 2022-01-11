@@ -95,7 +95,7 @@ function clocktime() {
     time --;
     timeEl.textContent = time
     if (time <= 0) {
-        timeEl.textContent = "Time is up! Check score";
+        timeEl.textContent = time;
         endQuiz();
     }
 
@@ -150,5 +150,8 @@ function endQuiz() {
     var endEl = document.getElementById("end-screen");
     questionsEl.setAttribute("class" , "hide");
     endEl.removeAttribute("class");
+    clearInterval(holdTimer)
+    var finalSc = document.getElementById("final-score");
+    finalSc.textContent = ("Your Score is: " + time);
 
 }
