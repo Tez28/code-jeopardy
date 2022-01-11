@@ -22,3 +22,7 @@
 button {
     display: inline-block;
 }
+
+.answer-btn {
+    display: block;
+}

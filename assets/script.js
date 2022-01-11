@@ -7,25 +7,19 @@ var nextBtn = document.getElementById("#next-btn")
 var questionsEl = document.querySelector("#questions");
 var answersEl = document.querySelector("#answers")
 var inititalsEl = document.querySelector("#initials");
-var questionsTi = document.querySelector(".questions-title");
+var questionsTi = document.querySelector(".question-title");
 
 var finalScore = document.getElementById(".final-score");
-var answerA = document.getElementById("#btn-A")
-var answerB = document.getElementById("#btn-B")
-var answerC = document.getElementById("#btn-C")
-var answerD = document.getElementById("#btn-D")
-var checkAnswer =  document.getElementById("#checkAnswer")
 
-var holdTimer = 0;
+var checkAnswer = document.getElementById("checkAnswer")
+
+var holdTimer;
+var time = 75;
 var penalty = 15;
 var scoreEl = 0;
 var correctAns = 0;
-
-// create quiz
-var quiz = newQuiz(questions);
-
-//display quiz
-initiateQuiz();
+var secondsLeft = "";
+var questionIndex = 0;
 
 
 
@@ -86,69 +80,69 @@ const questions = [
 // add event listener for start quiz
 
 function startQuiz () {
-    console.log("Quiz Started")
-    var startEl = document.querySelector(".start")
-    startEl.setAttribute("class", "hide")
-    questionsEl.removeAttribute("class")
+    console.log("Quiz Started");
+    var startEl = document.querySelector(".start");
+    startEl.setAttribute("class", "hide");
+    questionsEl.removeAttribute("class");
     questionIndex = 0;
-    holdTimer = 75;
+    holdTimer = setInterval(clocktime, 1000);
+    timeEl.textContent = time
+    initiateQuest();
 
 }
-
-//trigger timer on start button
-startButton.addEventListener("click", function (){
-
-    
-    
-    startButton.onclick = startQuiz    
-    if(holdTimer === 0) {
-        holdTimer = setInterval(function(){
-            secondsLeft--;
-            timeEl.textContent = + secondsLeft;
-            initiateQuest()
-            if(secondsLeft <= 0) {
-                clearInterval(holdTimer);
-                timeEl.textContent = "Time is up! Check score";
-            }
-        }, 1000);
+function clocktime() {
+    time --;
+    timeEl.textContent = time
+    if (time <= 0) {
+        timeEl.textContent = "Time is up! Check score";
+        endQuiz();
     }
-    showQuiz();
-})
+
+}
+//trigger timer on start button
+
+
+
 
 // present questions title and choices
-function showQuiz() {
-    nextQuestion();
+function initiateQuest() {
+    var currentQuestion = questions[questionIndex]
+    questionsTi.textContent = currentQuestion.Title;
+    choicesEl.innerHTML = "";
+    for (var i = 0; i < currentQuestion.choices.length; i++) {
+        var choiceBtn = document.createElement("button")
+        choiceBtn.setAttribute("class", "classChoices")
+        choiceBtn.setAttribute("value", currentQuestion.choices[i])
+        choiceBtn.textContent = i+ 1 + "; " + currentQuestion.choices[i]
+        choiceBtn.onclick = nextQuestion
+        choicesEl.appendChild(choiceBtn)
+    }
+
 }
 
 function nextQuestion() {
-    questionsTi.textContent = questions[questionIndex].Title;
-    answerA.textContent = questions[questionsIndex].choices[0];
-    answerB.textContent = questions[questionsIndex].choices[1];
-    answerC.textContent = questions[questionsIndex].choices[2];
-    answerD.textContent = questions[questionsIndex].choices[3];
-
-}
-
-// check answer for accuracy
-function reviewAnswer(answer) {
-    if (questions[questionIndex].answer === questions[questionIndex].choices[answer]) {
+    console.log("inside next question")
+    if ( this.value === questions[questionIndex].answer) {
         // add 1pt for correct
         correctAns++;
         // inform tester correct
         checkAnswer.textContent = "Your Correct!";
     } else {
         // if wrong answer selected inform and subtract time
-        hold -= 15;
-        timeEl.textContent = holdTimer;
+        time -= 15;
+        timeEl.textContent = time;
         checkAnswer.textContent = "Incorrect";
     }
 
     questionIndex++;
     // this repeats sequence for all questions
-    if (questionIndex < questions.length) {
-        nextQuestion();
+    if (questionIndex === questions.length) {
+        endQuiz();
     }else {
         // once final question reached end quiz
-        endQuiz();
+        initiateQuest();
     }
+
 }
+
+startButton.onclick = startQuiz;
