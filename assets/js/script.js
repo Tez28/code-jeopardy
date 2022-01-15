@@ -13,7 +13,8 @@ var submit = document.getElementById("submit");
 // var endEl = document.getElementById("end-screen");
 var finalScore = document.getElementById("#final-score");
 
-var checkAnswer = document.getElementById("checkAnswer")
+var checkAnswer = document.getElementById("checkAnswer");
+var leaderSC = [];
 
 var holdTimer;
 var time = 75;
@@ -163,8 +164,23 @@ function newSubmit (event){
     var highScore = document.createElement("li");
     highScore.setAttribute("class" ,"leadlist");
     highScore.innerText = inititalsEl.value;
-    leaderEl.appendChild(highScore)
+    leaderEl.appendChild(highScore);
+    localStorage.setItem(highScore, JSON.stringify(highScore));
+
+    
 
 }
 
+
+function showScore() {
+    var userScore = JSON.parse(localStorage.getItem(highScore));
+}
+
+
+
 submit.addEventListener("click", newSubmit);
+
+function style () {
+    document.body.style.backgroundImage = "url('/assets/img/Marvel-Vs.-DC.jpg')"
+
+}

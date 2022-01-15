@@ -16,9 +16,25 @@
 }
 
 .hide {
-    display: none;
+    visibility: hidden;
 }
 
 button {
     display: inline-block;
+
+}
+
+.answer-btn {
+    display: block;
+}
+
+.classChoices {
+    justify-content: space-around;
+    font-size: larger;
+    flex: wrap;
+    align-items: center;
+}
+
+body {
+    background: green;
 }
