@@ -16,13 +16,23 @@
 }
 
 .hide {
-    display: none;
+    visibility: hidden;
 }
 
 button {
     display: inline-block;
+
 }
 
 .answer-btn {
     display: block;
+}
+
+.choices li {
+    justify-content: space-between;
+    font-size: larger;
+}
+
+.question-title {
+    font-size: 45px red;
 }

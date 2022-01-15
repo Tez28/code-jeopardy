@@ -3,13 +3,15 @@
 var startButton = document.querySelector(".start-btn")
 var timeEl = document.querySelector(".time") 
 var choicesEl   = document.querySelector(".choices")
-var nextBtn = document.getElementById("#next-btn")
+
 var questionsEl = document.querySelector("#questions");
 var answersEl = document.querySelector("#answers")
 var inititalsEl = document.querySelector("#initials");
 var questionsTi = document.querySelector(".question-title");
-
-var finalScore = document.getElementById(".final-score");
+var leaderEl = document.querySelector("#leader")
+var submit = document.getElementById("submit");
+// var endEl = document.getElementById("end-screen");
+var finalScore = document.getElementById("#final-score");
 
 var checkAnswer = document.getElementById("checkAnswer")
 
@@ -25,54 +27,54 @@ var questionIndex = 0;
 
 const questions = [
     {
-        Title: "Question 1",
-        choices: ["A", "B", "C", "D" ],
-        answer: "A"
+        Title: "How much did DC Comics pay for the rights to Superman?",
+        choices: ["$130", "$10", "$300", "$500" ],
+        answer: "$130"
     },
     {
-        Title: "Question 2",
-        choices: ["A", "B", "C", "D" ],
-        answer: "A"
+        Title: "When was the 1st Marvel comic published?",
+        choices: ["1925", "1947", "1939", "1919" ],
+        answer: "1939"
     },
     {
-        Title: "Question 3",
-        choices: ["A", "B", "C", "D" ],
-        answer: "A"
+        Title: "In what Country did S.H.I.E.L.D begin operations?",
+        choices: ["Egypt", "U.S.A.", "Algeria", "Kuwait" ],
+        answer: "Egypt"
     },
     {
-        Title: "Question 4",
-        choices: ["A", "B", "C", "D" ],
-        answer: "A"
+        Title: "What did the Comics Code Authority ban the depiction of in the 60's?",
+        choices: ["Leprechauns", "Werewolves and Vampires", "Unicorns", "Disco Clowns" ],
+        answer: "Werewolves and Vampires"
     },
     {
-        Title: "Question 5",
-        choices: ["A", "B", "C", "D" ],
-        answer: "A"
+        Title: "What was the title of Andy Warhols' unapproved Batman movie?",
+        choices: ["Adventures of Lex Luthor", "Superman v The Retaliators", "Super Troopers", "Batman Dracula" ],
+        answer: "Batman Dracula"
     },
     {
-        Title: "Question 6",
-        choices: ["A", "B", "C", "D" ],
-        answer: "A"
+        Title: "When Batman sits on the Mobius Chair and asks it who the Joker is what does he learn?",
+        choices: ["No one", "There are 3", "His long lost brother is the Joker", "Donnie Darko is the Joker" ],
+        answer: "There are 3"
     },
     {
-        Title: "Question 7",
-        choices: ["A", "B", "C", "D" ],
-        answer: "A"
+        Title: "What power did Superman not originally have?",
+        choices: ["Flight", "Strength", "X-ray vision", "Superspeed" ],
+        answer: "Flight"
     },
     {
-        Title: "Question 8",
-        choices: ["A", "B", "C", "D" ],
-        answer: "A"
+        Title: "In what city was Luke Cage raised?",
+        choices: ["Charleston", "Brooklyn", "Harlem", "Stockton" ],
+        answer: "Harlem"
     },
     {
-        Title: "Question 9",
-        choices: ["A", "B", "C", "D" ],
-        answer: "A"
+        Title: "What Acquatic creature can Acquanman not control completely",
+        choices: ["Angel Fish", "Baracudas", "Crabs", "Dolphins" ],
+        answer: "Dolphins"
     },
     {
-        Title: "Question 10",
-        choices: ["A", "B", "C", "D" ],
-        answer: "A"
+        Title: "What super-hero movie should've never been made?",
+        choices: ["Green Lantern", "Superman", "Acquaman", "Deadpool" ],
+        answer: "Green Lantern"
     },
 ]
 
@@ -113,6 +115,7 @@ function initiateQuest() {
         choiceBtn.textContent = i+ 1 + ": " + currentQuestion.choices[i]
         choiceBtn.onclick = nextQuestion
         choicesEl.appendChild(choiceBtn)
+
     }
 
 }
@@ -150,8 +153,18 @@ function endQuiz() {
     var endEl = document.getElementById("end-screen");
     questionsEl.setAttribute("class" , "hide");
     endEl.removeAttribute("class");
-    clearInterval(holdTimer)
-    var finalSc = document.getElementById("final-score");
-    finalSc.textContent = ("Your Score is: " + time);
+    clearInterval(holdTimer);
+    
+
+};
+
+function newSubmit (event){
+    event.preventDefault();
+    var highScore = document.createElement("li");
+    highScore.setAttribute("class" ,"leadlist");
+    highScore.innerText = inititalsEl.value;
+    leaderEl.appendChild(highScore)
 
 }
+
+submit.addEventListener("click", newSubmit);
