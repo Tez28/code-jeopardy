@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Jeopardy</title>
+    <link rel="stylesheet" href="./assets/css style/styles.css">
+
+</head>
+<body>
+    <!-- nav bar -->
+
+    <!-- high score link -->
+    <div class="score-list"><a href="">View High Score</a></div>
+
+    <!-- insert timer -->
+    <div class="timer">Timer: <span class="time">0</span></div>
+
+
+    <!-- initial instructions -->
+    <div class="container">
+        <div class="start">
+            <h1>Code Jeopardy</h1>
+            <p>It's Time to test your knowledge on comic book heroes! You will be presented with
+                various questions pertainig to comic book heroes across the DCEU and MCU (DC Comics and Marvel).
+                This is a timed quiz and wrong answers are penalized with a time reduction so think carefully!
+            </p>
+            <button class="start-btn">Start Quiz</button>
+        </div>
+        <!-- insert quiz area -->
+        <div class="hide" id="questions">
+            <h2 class="question-title"></h2>
+            <div class="choices" id="answers">
+                
+            
+            </div>
+            <p id="checkAnswer"></p>
+            
+        </div>
+        
+
+        <!-- insert score board-->
+        <div class="hide" id="end-screen">
+            <h2>All Done!</h2>
+            <p class="final-score">Your Final Score is: <span ></span></p>
+            <p>
+                Enter Initials: <input type="text" id="initials"/>
+                <button id="submit">Submit</button> 
+            </p>
+            <ul id="leader"> </ul>
+        </div>
+
+
+    </div> 
+
+
+    
+
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
