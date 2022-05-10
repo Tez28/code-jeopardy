@@ -11,7 +11,7 @@ questions they will be informed whether their answer is correct or incorrect. If
 user answers incorrectly a penalty of 15 seconds is taken off of the clock. If the user fails to answer all questions in the time given then the 
 user is taken to the end screen where they may input their initials and score(time left on clock).
 
-## Build
+## Technology
 This application was built with HTML, CSS and JavaScript
 
 #App link
